@@ -5,12 +5,16 @@
  */
 package sources;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
+
 /**
  *
  * @author ricardotg
  */
 public class Cliente extends javax.swing.JFrame {
-
+    private static final int PUERTOESCUCHA = 6666;
     /**
      * Creates new form Cliente
      */
@@ -27,13 +31,18 @@ public class Cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnConsulta = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Enviar Consulta");
+        btnConsulta.setText("Enviar Consulta");
+        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Consulta");
 
@@ -48,7 +57,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jButton1))
+                            .addComponent(btnConsulta))
                         .addGap(0, 256, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -60,12 +69,16 @@ public class Cliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnConsulta)
                 .addGap(136, 136, 136))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
+        abrirSocket();
+    }//GEN-LAST:event_btnConsultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,9 +114,26 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void abrirSocket() {
+        Socket socket = null;
+        try {
+            socket = new Socket("localhost", PUERTOESCUCHA);
+            PrintStream salida = new PrintStream(socket.getOutputStream());
+            salida.println(jTextField1.getText());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            try {
+                socket.close();
+            } catch (Exception e) {
+                
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
