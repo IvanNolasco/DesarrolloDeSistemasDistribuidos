@@ -1,0 +1,67 @@
+CREATE DATABASE Escuela;
+USE Escuela;
+
+CREATE TABLE CentroDeTrabajo(
+	idCentroDeTrabajo int not null primary key,
+	nombreCentroDeTrabajp varchar(45)
+);
+
+CREATE TABLE Carrera(
+	idCarrera int not null primary key,
+	nombreCarrera varchar(45),
+	duracion int,
+	idCentroDeTrabajo int(11) not null,
+	foreign key (idCentroDeTrabajo) REFERENCES CentroDeTrabajo(idCentroDeTrabajo)
+);
+
+CREATE TABLE Alumno(
+	matricula bigint not null primary key,
+	nombreAlumno varchar(45),
+	paternoAlumno varchar(45),
+	maternoAlumno varchar(45),
+	fechaNacimiento date,
+	calle varchar(45),
+	colonia varchar(45),
+	numero int,
+	codigoPostal bigint,
+	sexo char(1),
+	email varchar(45),
+	idCarrera int,
+	foreign key (idCarrera) REFERENCES Carrera(idCarrera)
+);
+
+CREATE TABLE Materia(
+	idMaterias int not null primary key,
+	nombreMateria varchar(45),
+	creditos int
+);
+
+CREATE TABLE Examen(
+	idExamen int not null primary key,
+	fecha date,
+	idMaterias int,
+	foreign key (idMaterias) REFERENCES Materia(idMaterias)
+);
+
+CREATE TABLE Calificaciones(
+	idCalificaciones int not null primary key,
+	puntaje DOUBLE,
+	idExamen int,
+	matricula bigint,
+	foreign key (idExamen) REFERENCES Examen(idExamen),
+	foreign key (matricula) REFERENCES Alumno(matricula)
+);
+
+CREATE TABLE Preguntas(
+	idPregunta int not null primary key,
+	pregunta varchar(100),
+	idExamen int,
+	foreign key (idExamen) REFERENCES Examen(idExamen)
+);
+
+CREATE TABLE Respuestas(
+	idRespuesta int not null primary key,
+	respuesta varchar(100),
+	idPregunta int,
+	foreign key (idPregunta) REFERENCES Preguntas(idPregunta)
+);
