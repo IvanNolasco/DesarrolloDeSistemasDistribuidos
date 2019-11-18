@@ -1,0 +1,5 @@
+node_modules/
+alumnoEnv/
+static/bundles
+.vscode/
+*__pycache__
