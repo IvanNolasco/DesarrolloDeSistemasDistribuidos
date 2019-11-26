@@ -1,11 +1,6 @@
 class Alumno:
-    noBoleta = ''
-    nombre = ''
-    paterno = ''
-    materno = ''
-    email = ''
 
-    def __init__(self, noBoleta, nombre, paterno, materno, email):
+    def __init__(self, noBoleta='', nombre='', paterno='', materno='', email=''):
         self.noBoleta = noBoleta
         self.nombre = nombre
         self.paterno = paterno

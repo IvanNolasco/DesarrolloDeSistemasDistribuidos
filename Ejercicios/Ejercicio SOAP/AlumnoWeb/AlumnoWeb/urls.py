@@ -21,5 +21,14 @@ from alumno import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.indexView, name='index'),
-    url('listAlumno', views.listAlumno, name='listAlumno')
+    url('listAlumno', views.listAlumno, name='listAlumno'),
+    url('listMateria', views.listMateria, name='listMateria'),
+    url('createAlumno', views.createAlumno, name='createAlumno'),
+    url('createMateria', views.createMateria, name='createMateria'),
+    url('deleteAlumno', views.deleteAlumno, name='deleteAlumno'),
+    url('deleteMateria', views.deleteMateria, name='deleteMateria'),
+    url('updateAlumno', views.updateAlumno, name='updateAlumno'),
+    url('updateMateria', views.updateMateria, name='updateMateria'),
+    url('findAlumno', views.findAlumno, name='findAlumno'),
+    url('findMateria', views.findMateria, name='findMateria')
 ]

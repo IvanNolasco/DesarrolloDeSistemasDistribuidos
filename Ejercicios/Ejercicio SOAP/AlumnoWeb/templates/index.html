@@ -4,12 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Example</title>
+        <script>
+            var csrftoken = "{{ csrf_token }}";
+        </script>
     </head>
     <body>
         <div id="react"></div>
         {% render_bundle 'main' %}
-        <script>
-            var csrftoken = "{{ csrf_token }}";
-        </script>
     </body>
 </html>
