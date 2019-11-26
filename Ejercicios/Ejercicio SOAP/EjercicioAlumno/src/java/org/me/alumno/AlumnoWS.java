@@ -89,12 +89,13 @@ public class AlumnoWS {
         AlumnoJpaController alumnoController = new AlumnoJpaController();
         try {
             alumnoController.edit(alumno);
+            return true;
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return true;
+        return false;
     }
 
     /**
@@ -145,7 +146,7 @@ public class AlumnoWS {
      * Web service operation
      */
     @WebMethod(operationName = "deleteMateria")
-    public boolean deleteMateria(@WebParam(name = "noBoleta") int idMateria) {
+    public boolean deleteMateria(@WebParam(name = "idMateria") int idMateria) {
         MateriaJpaController materiaController = new MateriaJpaController();
         try {
             materiaController.destroy(idMateria);
@@ -154,5 +155,15 @@ public class AlumnoWS {
             Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "findMateria")
+    public Materia findMateria(@WebParam(name = "idMateria") int idMateria) {
+        MateriaJpaController materiaController = new MateriaJpaController();
+        Materia m = materiaController.findMateria(idMateria);
+        return m;
     }
 }
