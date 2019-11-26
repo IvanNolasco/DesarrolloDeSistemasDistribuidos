@@ -86,39 +86,7 @@ public class AlumnoJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Alumno persistentAlumno = em.find(Alumno.class, alumno.getNoBoleta());
-            List<Materia> materiaListOld = persistentAlumno.getMateriaList();
-            List<Materia> materiaListNew = alumno.getMateriaList();
-            List<String> illegalOrphanMessages = null;
-            for (Materia materiaListOldMateria : materiaListOld) {
-                if (!materiaListNew.contains(materiaListOldMateria)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Materia " + materiaListOldMateria + " since its noBoleta field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            List<Materia> attachedMateriaListNew = new ArrayList<Materia>();
-            for (Materia materiaListNewMateriaToAttach : materiaListNew) {
-                materiaListNewMateriaToAttach = em.getReference(materiaListNewMateriaToAttach.getClass(), materiaListNewMateriaToAttach.getIdMateria());
-                attachedMateriaListNew.add(materiaListNewMateriaToAttach);
-            }
-            materiaListNew = attachedMateriaListNew;
-            alumno.setMateriaList(materiaListNew);
             alumno = em.merge(alumno);
-            for (Materia materiaListNewMateria : materiaListNew) {
-                if (!materiaListOld.contains(materiaListNewMateria)) {
-                    Alumno oldNoBoletaOfMateriaListNewMateria = materiaListNewMateria.getNoBoleta();
-                    materiaListNewMateria.setNoBoleta(alumno);
-                    materiaListNewMateria = em.merge(materiaListNewMateria);
-                    if (oldNoBoletaOfMateriaListNewMateria != null && !oldNoBoletaOfMateriaListNewMateria.equals(alumno)) {
-                        oldNoBoletaOfMateriaListNewMateria.getMateriaList().remove(materiaListNewMateria);
-                        oldNoBoletaOfMateriaListNewMateria = em.merge(oldNoBoletaOfMateriaListNewMateria);
-                    }
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -194,7 +162,6 @@ public class AlumnoJpaController implements Serializable {
     }
 
     public Alumno findAlumno(String id) {
-        System.out.println(id);
         EntityManager em = getEntityManager();
         try {
             return em.find(Alumno.class, id);
