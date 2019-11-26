@@ -6,7 +6,6 @@
 package Alumno;
 
 import java.util.List;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -327,7 +326,7 @@ public class Main extends javax.swing.JFrame {
         modelo.setRowCount(0);
         List<Alumno> list =(List<Alumno>)(Object) AlumnoMateria.listAlumno();
         for (Alumno o : list) {
-            Object [] roles = {o.getNoBoleta(),o.getNombre(),o.getMaterno(),o.getPaterno(),o.getEmail()};
+            Object [] roles = {o.getNoBoleta(),o.getNombre(),o.getPaterno(),o.getMaterno(),o.getEmail()};
             modelo.addRow(roles);
         }
     }//GEN-LAST:event_btnListActionPerformed
@@ -390,6 +389,21 @@ public class Main extends javax.swing.JFrame {
             modelo.addRow(roles);
             btnCancel.setText("Aceptar");
         }
+        else if (btnUpdate.isEnabled()) {
+           Alumno a = new Alumno();
+           a.setNoBoleta(txtBoleta.getText());
+           a.setNombre(txtNombre.getText());
+           a.setPaterno(txtPaterno.getText());
+           a.setMaterno(txtMaterno.getText());
+           a.setEmail(txtEmail.getText());
+           boolean success = AlumnoMateria.updateAlumno(a);
+            if (success) {
+                JOptionPane.showMessageDialog(rootPane, "El alumno ha sido agregado exitosamente");
+            }else{
+               JOptionPane.showMessageDialog(rootPane, "Ha ocurrido un error..."); 
+            }
+            btnCancel.doClick();
+        }
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -439,6 +453,16 @@ public class Main extends javax.swing.JFrame {
         modelo.addRow(roles);
         btnSave.setEnabled(true);
         btnSearch2.setVisible(false);
+        
+        txtNombre.setEnabled(true);
+        txtNombre.setText(a.getNombre());
+        txtPaterno.setEnabled(true);
+        txtPaterno.setText(a.getPaterno());
+        txtMaterno.setEnabled(true);
+        txtMaterno.setText(a.getMaterno());
+        txtEmail.setEnabled(true);
+        txtEmail.setText(a.getEmail());
+        
     }//GEN-LAST:event_btnSearch2ActionPerformed
 
     /**

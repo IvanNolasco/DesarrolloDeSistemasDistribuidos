@@ -36,5 +36,17 @@ public class AlumnoMateria {
         org.me.alumno.AlumnoWS port = service.getAlumnoWSPort();
         return port.findAlumno(noBoleta);
     }
+
+    public static boolean updateAlumno(org.me.alumno.Alumno alumno) {
+        org.me.alumno.AlumnoWS_Service service = new org.me.alumno.AlumnoWS_Service();
+        org.me.alumno.AlumnoWS port = service.getAlumnoWSPort();
+        return port.updateAlumno(alumno);
+    }
+
+    private static boolean createMateria(int idMateria, java.lang.String nombreMateria, java.lang.String noBoleta) {
+        org.me.alumno.AlumnoWS_Service service = new org.me.alumno.AlumnoWS_Service();
+        org.me.alumno.AlumnoWS port = service.getAlumnoWSPort();
+        return port.createMateria(idMateria, nombreMateria, noBoleta);
+    }
     
 }
