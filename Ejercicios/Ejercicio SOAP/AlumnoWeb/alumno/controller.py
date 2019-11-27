@@ -7,7 +7,7 @@ from .materia import Materia
 class Controller:
 
     def __init__(self):
-        self.client = Client('http://localhost:8080/AlumnoWS/AlumnoWS?WSDL')
+        self.client = Client('http://localhost:8080/EjercicioAlumno/AlumnoWS?WSDL')
 
     def listAlumno(self):
         alumnos = []
