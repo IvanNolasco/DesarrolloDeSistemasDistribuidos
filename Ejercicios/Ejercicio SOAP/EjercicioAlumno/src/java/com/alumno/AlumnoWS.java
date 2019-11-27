@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.me.alumno;
+package com.alumno;
 
 import controller.AlumnoJpaController;
 import controller.MateriaJpaController;
 import controller.exceptions.IllegalOrphanException;
-import controller.exceptions.NonexistentEntityException;
 import entity.Alumno;
 import entity.Materia;
 import java.util.List;
@@ -17,16 +16,21 @@ import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.ejb.Stateless;
 
 /**
  *
  * @author ricardotg
  */
 @WebService(serviceName = "AlumnoWS")
-@Stateless()
 public class AlumnoWS {
 
+    /**
+     * This is a sample web service operation
+     */
+    @WebMethod(operationName = "hello")
+    public String hello(@WebParam(name = "name") String txt) {
+        return "Hello " + txt + " !";
+    }
     /**
      * Web service operation
      * @return 
@@ -75,7 +79,7 @@ public class AlumnoWS {
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } catch (NonexistentEntityException ex) {
+        } catch (controller.exceptions.NonexistentEntityException ex) {
             Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
@@ -90,8 +94,6 @@ public class AlumnoWS {
         try {
             alumnoController.edit(alumno);
             return true;
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -151,7 +153,7 @@ public class AlumnoWS {
         try {
             materiaController.destroy(idMateria);
             return true;
-        } catch (NonexistentEntityException ex) {
+        } catch (controller.exceptions.NonexistentEntityException ex) {
             Logger.getLogger(AlumnoWS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }

@@ -10,8 +10,8 @@
 
     <string name="menu_list">Listar Alumnos</string>
     <string name="menu_insert">Insertar Alumno</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_delete">Borrar Alumno</string>
+    <string name="menu_update">Modificar Alumno</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 

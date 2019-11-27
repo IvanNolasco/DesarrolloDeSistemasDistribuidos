@@ -44,7 +44,7 @@ class InsertFragment : Fragment() {
         a.materno = maternoTxt.text.toString()
         a.email = correoTxt.text.toString()
         var confirm = AlertDialog.Builder(activity)
-        if (insertAlumno(boletaTxt.text.toString())){
+        if (insertAlumno(a)){
             confirm.setMessage("Se ha agregado el Alumno con exito")
         }else{
             confirm.setMessage("No se Agrego al alumno")
