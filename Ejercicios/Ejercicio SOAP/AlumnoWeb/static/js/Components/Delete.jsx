@@ -53,7 +53,7 @@ export default class Delete extends Component {
               type="text"
             />
           </Form.Group>
-          <Button variant="dark" block type="submit">Borrar Materia</Button>
+          <Button variant="dark" block type="submit">Borrar Alumno</Button>
         </Form>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
