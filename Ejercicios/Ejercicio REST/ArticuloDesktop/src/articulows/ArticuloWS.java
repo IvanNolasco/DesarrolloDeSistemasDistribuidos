@@ -5,20 +5,13 @@
  */
 package articulows;
 
-import java.io.StringReader;
-import java.util.ArrayList;
+
 import java.util.List;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.json.JsonReader;
-import javax.json.JsonValue;
 /**
  *
  * @author ricardotg
