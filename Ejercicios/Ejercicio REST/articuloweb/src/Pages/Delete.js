@@ -10,14 +10,14 @@ export default class Delete extends Component {
     show: false
   }
 
-  handleChange = (e) =>{
+  handleChange = (e) => {
     const value = e.target.value
     const name = e.target.id
-    this.setState({[name]:value})
+    this.setState({ [name]: value })
   }
-  handleClose = () => this.setState({show: false})
+  handleClose = () => this.setState({ show: false })
 
-  handleSubmit = (e) =>{
+  handleSubmit = (e) => {
     e.preventDefault()
     fetch(`http://127.0.0.1:8000/articulos/${this.state.claveArticulo}/`, {
       method: 'DELETE',
@@ -26,14 +26,14 @@ export default class Delete extends Component {
         "Accept": "application/json",
         "Content-Type": "application/json"
       },
-    }).then(response => {        
-      if (response.ok){
-        this.setState({wasDeleted: "El articulo se ha borrado con exito.",show: true})
+    }).then(response => {
+      if (response.ok) {
+        this.setState({ wasDeleted: "El articulo se ha borrado con exito.", show: true })
         this.props.listArticulo()
-      }else
-        this.setState({wasDeleted: "El articulo no se pudo borrar.", show: true})
+      } else
+        this.setState({ wasDeleted: "El articulo no se pudo borrar.", show: true })
     });
-    
+
   }
 
   render() {
@@ -60,7 +60,7 @@ export default class Delete extends Component {
           <Modal.Footer>
             <Button variant="primary" onClick={this.handleClose}>
               Aceptar
-                </Button>
+            </Button>
           </Modal.Footer>
         </Modal>
       </>

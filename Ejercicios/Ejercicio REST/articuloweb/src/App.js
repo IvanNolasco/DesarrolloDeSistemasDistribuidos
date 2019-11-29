@@ -19,12 +19,6 @@ class App extends Component {
   
 
   listArticulo = () => {
-    /*var data = {
-      'claveArticulo': "A001",
-      'descripcion': "X Box One X",
-      'precio': 499.99,
-      'existencias': 144
-    }*/
     fetch('http://127.0.0.1:8000/articulos/', {
       method: 'GET',
       headers: {
