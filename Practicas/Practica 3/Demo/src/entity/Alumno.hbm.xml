@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/11/2019 04:07:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Alumno" table="alumno" catalog="demo" optimistic-lock="version">
+        <id name="noBoleta" type="string">
+            <column name="noBoleta" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" not-null="true" />
+        </property>
+        <property name="paterno" type="string">
+            <column name="paterno" length="30" not-null="true" />
+        </property>
+        <property name="materno" type="string">
+            <column name="materno" length="30" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <set name="materias" table="materia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="noBoleta" length="10" not-null="true" />
+            </key>
+            <one-to-many class="entity.Materia" />
+        </set>
+    </class>
+</hibernate-mapping>
