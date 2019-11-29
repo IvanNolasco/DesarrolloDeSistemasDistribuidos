@@ -26,3 +26,6 @@ hs_err_pid*
 /Practicas/Practica 3/WebServicesRoles/build/
 /Practicas/Practica 3/Demo/nbproject/private/
 /Practicas/Practica 3/Demo/build/
+
+/Ejercicios/Ejercicio SOAP/AlumnoWeb/node_modules/
+/Ejercicios/Ejercicio REST/ArticuloDesktop/build/

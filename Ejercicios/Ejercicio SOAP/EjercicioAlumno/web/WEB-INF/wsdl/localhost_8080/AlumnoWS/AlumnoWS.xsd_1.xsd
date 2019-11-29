@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://alumno.me.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://alumno.me.org/">
+
+<xs:element name="alumno" type="tns:alumno"/>
+
+<xs:element name="createAlumno" type="tns:createAlumno"/>
+
+<xs:element name="createAlumnoResponse" type="tns:createAlumnoResponse"/>
+
+<xs:element name="createMateria" type="tns:createMateria"/>
+
+<xs:element name="createMateriaResponse" type="tns:createMateriaResponse"/>
+
+<xs:element name="deleteAlumno" type="tns:deleteAlumno"/>
+
+<xs:element name="deleteAlumnoResponse" type="tns:deleteAlumnoResponse"/>
+
+<xs:element name="deleteMateria" type="tns:deleteMateria"/>
+
+<xs:element name="deleteMateriaResponse" type="tns:deleteMateriaResponse"/>
+
+<xs:element name="findAlumno" type="tns:findAlumno"/>
+
+<xs:element name="findAlumnoResponse" type="tns:findAlumnoResponse"/>
+
+<xs:element name="listAlumno" type="tns:listAlumno"/>
+
+<xs:element name="listAlumnoResponse" type="tns:listAlumnoResponse"/>
+
+<xs:element name="listMateria" type="tns:listMateria"/>
+
+<xs:element name="listMateriaResponse" type="tns:listMateriaResponse"/>
+
+<xs:element name="materia" type="tns:materia"/>
+
+<xs:element name="updateAlumno" type="tns:updateAlumno"/>
+
+<xs:element name="updateAlumnoResponse" type="tns:updateAlumnoResponse"/>
+
+<xs:element name="updateMateria" type="tns:updateMateria"/>
+
+<xs:element name="updateMateriaResponse" type="tns:updateMateriaResponse"/>
+
+<xs:complexType name="listAlumno">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listAlumnoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:alumno" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="alumno">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="materno" type="xs:string" minOccurs="0"/>
+<xs:element name="noBoleta" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="paterno" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateMateria">
+<xs:sequence>
+<xs:element name="Materia" type="tns:materia" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="materia">
+<xs:sequence>
+<xs:element name="idMateria" type="xs:int" minOccurs="0"/>
+<xs:element name="noBoleta" type="tns:alumno" minOccurs="0"/>
+<xs:element name="nombreMateria" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateMateriaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listMateria">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listMateriaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:materia" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createMateria">
+<xs:sequence>
+<xs:element name="idMateria" type="xs:int"/>
+<xs:element name="nombreMateria" type="xs:string" minOccurs="0"/>
+<xs:element name="noBoleta" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createMateriaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteMateria">
+<xs:sequence>
+<xs:element name="noBoleta" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteMateriaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteAlumno">
+<xs:sequence>
+<xs:element name="noBoleta" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteAlumnoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAlumno">
+<xs:sequence>
+<xs:element name="alumno" type="tns:alumno" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAlumnoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAlumno">
+<xs:sequence>
+<xs:element name="alumno" type="tns:alumno" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAlumnoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAlumno">
+<xs:sequence>
+<xs:element name="noBoleta" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAlumnoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:alumno" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
